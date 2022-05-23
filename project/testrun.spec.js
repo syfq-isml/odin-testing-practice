@@ -3,6 +3,7 @@ import {
 	reverseString,
 	calculator,
 	caesarCipher,
+	analyzeArray,
 } from "./testrun.js";
 
 describe("capitalize", () => {
@@ -53,5 +54,30 @@ describe("caesarCipher", () => {
 	});
 	test("keeps punctuation in correct place", () => {
 		expect(caesarCipher("ab, cdef")).toBe("bc, defg");
+	});
+});
+
+const object = analyzeArray([1, 8, 3, 4, 2, 6]);
+const decimalObj = analyzeArray([1.1, 2.2, 3.3, 4.4]);
+const strObj = analyzeArray([1, 2, "S", "%"]);
+
+describe("analyzeArray", () => {
+	test("returns correct average", () => {
+		expect(object.average).toBe(4);
+	});
+	test("returns correct min", () => {
+		expect(object.min).toBe(1);
+	});
+	test("returns correct max", () => {
+		expect(object.max).toBe(8);
+	});
+	test("returns correct length", () => {
+		expect(object["length"]).toBe(6);
+	});
+	test("accepts decimal places", () => {
+		expect(decimalObj.average).toBeCloseTo(2.75);
+	});
+	test("does not accept strings", () => {
+		expect;
 	});
 });
